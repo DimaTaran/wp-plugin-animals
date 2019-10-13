@@ -31,13 +31,47 @@ function type_register_animals(){
         'menu_icon'		=> null,
         'show_in_nav_menus'	=> true,
         'capability_type'	=> 'post',
+        'rewrite'               => array('slug' => 'animals', 'with_front' => FALSE),
         'supports'		=>	array(
             'title'
         )
     ));
 
     // Register Post Type
-    register_post_type('animal', $args);
+    register_post_type( 'animal', $args );
+    flush_rewrite_rules();
 }
 
-add_action('init', 'type_register_animals');
+add_action( 'init', 'type_register_animals');
+
+// Create Breed Taxonomy
+function animals_taxonomy(){
+    register_taxonomy(
+        'breeds',
+        'animal',
+        array(
+            'label' => 'Breeds',
+            'hierarchical'          => true,
+            'query_var' => true,
+            'rewrite' => array(
+                'slug' => 'breeds',
+                'with_front' => false
+            )
+        )
+    );
+}
+
+add_action( 'init', 'animals_taxonomy' );
+
+function animals_load_templates( $template ){
+    if ( get_query_var('post_type') == 'animal' ) {
+        $new_template = plugin_dir_path(__FILE__). 'templates/single-animal.php';
+        if('' != $new_template){
+            return $new_template;
+        }
+    }
+
+    return $template;
+}
+
+add_filter('template_include', 'animals_load_templates');
