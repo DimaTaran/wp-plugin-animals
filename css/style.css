@@ -1,3 +1,45 @@
 .animal{
 	margin-bottom:20px;
 }
+
+.animals-form{
+	font-size:18px;
+	padding-top:15px;
+	margin-bottom:30px;
+}
+
+.animals-form input{
+	padding:5px;
+}
+
+.animals-form label{
+	display:block;
+	padding-bottom:10px;
+}
+
+.animals-form .form-group{
+	padding-bottom:15px;
+}
+
+.btn, .del, .update {
+	padding: 15px 25px;
+	font-size: 24px;
+	text-align: center;
+	cursor: pointer;
+	outline: none;
+	color: #fff;
+	background-color: grey;
+	border: none;
+	border-radius: 15px;
+	box-shadow: 0 9px #999;
+}
+
+.btn:hover, .del:hover, .update:hover {background-color: lightgrey;
+	color: #000;
+}
+
+.btn:active, .del:active {
+	background-color: lightgrey;
+	box-shadow: 0 5px #666;
+	transform: translateY(4px);
+}
