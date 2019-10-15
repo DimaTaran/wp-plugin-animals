@@ -39,6 +39,7 @@ get_header();
                    <?php if (is_user_logged_in())  { ?>
                     <div class="entry-title main_title">
                         <button class="del" data-id="<?php the_ID(); ?>">Delete</button> <button class="update">Update</button>
+
                     </div>
                     <?php } ?>
                     <hr>

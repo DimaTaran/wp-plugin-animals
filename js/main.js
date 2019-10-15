@@ -37,7 +37,7 @@ jQuery( document ).ready( function( $ ) {
 
     $('button.del').click(function(e){
 
-            // alert("Are You Sure?");
+            alert("Are You Sure?");
             var postID =  $(this).attr('data-id');
             $.ajax({
                 type: "POST",
@@ -55,7 +55,7 @@ jQuery( document ).ready( function( $ ) {
                 }
             });
             e.preventDefault();
-            // alert("Test");
+              });
 
-    });
+
 });
