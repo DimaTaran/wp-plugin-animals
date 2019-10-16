@@ -1,0 +1,21 @@
+<div class="form-popup form-popup-<?php the_ID(); ?>">
+    <form class="form-container">
+        <h2>Edit animal</h2>
+
+        <div class="form-group">
+            <label for="animals-title"><?php esc_html_e('Animals Title', 'animals-domain'); ?></label>
+            <input type="text" name="animals_title" class="up-animals-title"  id="animals-title" value="<?php the_title(); ?>" required>
+        </div>
+        <div class="form-group">
+            <label for="animals-color"><?php esc_html_e('Animals Color', 'animals-domain'); ?></label>
+            <input type="text" name="animals_color" class="up-animals-color" id="animals-color" value="<?php esc_html_e($post->animals_color, 'animals-domain'); ?>" required>
+        </div>
+        <div class="form-group">
+            <label for="animals-age"><?php esc_html_e('Animals Age', 'animals-domain'); ?></label>
+            <input type="number" name="animals_age" class="up-animals-age" id="animals-age" value="<?php esc_html_e($post->animals_age, 'animals-domain'); ?>" required>
+        </div>
+
+        <button type="submit" class="btn btn-update-<?php the_ID(); ?>">Update</button>
+        <button type="button" class="btn cancel" data-id="<?php the_ID(); ?>">Close</button>
+    </form>
+</div>

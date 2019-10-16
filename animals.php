@@ -35,3 +35,4 @@ require_once(plugin_dir_path(__FILE__) . '/includes/animals-ajax.php');
 
 add_action('wp_ajax_add-animal', 'add_animal_from_page');
 add_action('wp_ajax_del-animal', 'delete_animal_from_page');
+add_action('wp_ajax_edit-animal', 'edit_animal_from_page');

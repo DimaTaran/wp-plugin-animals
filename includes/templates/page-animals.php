@@ -13,7 +13,7 @@ get_header();
                 <h1 class="entry-title main_title"><?php the_title(); ?></h1>
                 <?php if ( is_user_logged_in() ) include_once(plugin_dir_path(__FILE__) . '/new-form.html');
                     $arg_posts =  array(
-                        'orderby'      => 'id',
+                        'orderby'      => 'ID',
                         'order'        => 'DESC',
                         'posts_per_page' => 10,
                         'post_type' => 'animal',
@@ -23,10 +23,13 @@ get_header();
                         if ( $query->have_posts() )
                         while ( $query->have_posts() ) : $query->the_post(); ?>
 				<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-					<h1 class="entry-title post_title">
+
+                    <?php if ( is_user_logged_in() ) include_once(plugin_dir_path(__FILE__) . '/edit-form.html'); ?>
+
+                    <h1 class="entry-title post_title">
                         <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
                     </h1>
-					<div class="entry-content">
+                  	<div class="entry-content">
 						<ul class="animals-info">
 						<?php if($post->animals_color) : ?>
 							<li><strong><?php esc_html_e('Animal Color: ', 'animals-domain'); ?><?php esc_html_e($post->animals_color, 'animals-domain'); ?></li>
@@ -37,8 +40,9 @@ get_header();
 					    </ul>
 					</div> <!-- .entry-content -->
                    <?php if (is_user_logged_in())  { ?>
+
                     <div class="entry-title main_title">
-                        <button class="del" data-id="<?php the_ID(); ?>">Delete</button> <button class="update">Update</button>
+                        <button class="del" data-id="<?php the_ID(); ?>">Delete</button> <button class="update open-button">Update</button>
 
                     </div>
                     <?php } ?>

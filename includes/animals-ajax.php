@@ -34,3 +34,27 @@ function delete_animal_from_page(){
         wp_die('Deleted');
     } else wp_die( 'Security failed' );
 }
+
+function edit_animal_from_page(){
+    if( wp_verify_nonce( $_POST['nonce'], 'animal-check') ) {
+        $dates = [ 'postID', 'title', 'color', 'age'];
+        foreach ( $dates as $date ) {
+            $$date = sanitize_text_field( $_POST[$date] );
+        }
+
+        $post = array(
+            'ID' => $postID,
+            'comment_status' =>  'close',
+            'post_status' =>  'publish' ,
+            'post_title' => $title,
+            'post_type' =>  'animal',
+        );
+
+        // Insert the post into the database
+        $post_id = wp_insert_post( $post );
+        update_post_meta( $post_id, 'animals_color', $color );
+        update_post_meta( $post_id, 'animals_age', $age );
+        print_r( json_encode( ['postID' => $post_id, 'title' => $title, 'color' => $color, 'age' => $age] ) );
+        wp_die();
+    } else wp_die( 'Security failed' );
+}
