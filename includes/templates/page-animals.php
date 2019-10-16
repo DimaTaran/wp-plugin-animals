@@ -6,7 +6,7 @@ Template Name: Animals
 get_header();
 ?>
 
-<div id="main-content">
+<div id="main-content site-content">
 	<div class="container">
 		<div id="content-area" class="clearfix">
 			<div id="left-area">
@@ -22,11 +22,11 @@ get_header();
                         $query = new WP_Query( $arg_posts );
                         if ( $query->have_posts() )
                         while ( $query->have_posts() ) : $query->the_post(); ?>
-				<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+				<article id="post-<?php the_ID(); ?>" <?php post_class(); ?> class="format-standard hentry entry">
 
                     <?php if ( is_user_logged_in() ) include_once(plugin_dir_path(__FILE__) . '/edit-form.html'); ?>
 
-                    <h1 class="entry-title post_title">
+                    <h1 class="entry-header entry-title post_title">
                         <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
                     </h1>
                   	<div class="entry-content">

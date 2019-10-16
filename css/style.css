@@ -1,3 +1,25 @@
+/* Header Styles */
+.container {
+	position: relative;
+	text-align: left;
+}
+/* Blog Sidebar */
+#sidebar {
+	float: left;
+	width: 20.875%;
+}
+
+#main-content, #content {
+	width: 50% !important;
+	padding-left: 20% !important;
+}
+#left-area {
+	width: 79.125%;
+	padding-bottom: 23px;
+}
+
+
+
 .animal{
 	margin-bottom:20px;
 }
